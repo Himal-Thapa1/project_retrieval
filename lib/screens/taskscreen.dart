@@ -66,31 +66,46 @@ class TasksScreen extends StatelessWidget {
                   topRight: Radius.circular(20.0),
                 ),
               ),
-              child: ListView(
-                children: <Widget>[
-                  ListTile(
-                    title: Text("This is task 1"),
-                    trailing: Checkbox(
-                      value: false,
-                      onChanged: (bool? value) {
-                        //left blank for now
-                      },
-                    ),
-                  ),
-                  ListTile(
-                    title: Text("This is task 2"),
-                    trailing: Checkbox(
-                      value: false,
-                      onChanged: (bool? value) {
-                        //left blank for now
-                      },
-                    ),
-                  )
-                ],
-              ),
+              child: TasksList(),
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class TasksList extends StatelessWidget {
+  const TasksList({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: <Widget>[
+        TaskTile(),
+        TaskTile(),
+        TaskTile(),
+      ],
+    );
+  }
+}
+
+class TaskTile extends StatelessWidget {
+  const TaskTile({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text("This is a task, this is where it will go."),
+      trailing: Checkbox(
+        value: false,
+        onChanged: (bool? value) {
+          //left blank for now
+        },
       ),
     );
   }
