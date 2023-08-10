@@ -8,9 +8,9 @@ class TasksScreen extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.lightBlueAccent,
-        onPressed: () { 
+        onPressed: () {
           // this function is to add later ...
-         },
+        },
         child: const Icon(Icons.add),
       ),
       backgroundColor: Colors.lightBlueAccent,
@@ -57,7 +57,6 @@ class TasksScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-
             child: Container(
               decoration: const BoxDecoration(
                 color: Colors.white,
