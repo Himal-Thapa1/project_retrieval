@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/tasks_list.dart';
+
 class TasksScreen extends StatelessWidget {
   const TasksScreen({super.key});
 
@@ -75,38 +77,5 @@ class TasksScreen extends StatelessWidget {
   }
 }
 
-class TasksList extends StatelessWidget {
-  const TasksList({
-    super.key,
-  });
 
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-        TaskTile(),
-        TaskTile(),
-        TaskTile(),
-      ],
-    );
-  }
-}
 
-class TaskTile extends StatelessWidget {
-  const TaskTile({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text("This is a task, this is where it will go."),
-      trailing: Checkbox(
-        value: false,
-        onChanged: (bool? value) {
-          //left blank for now
-        },
-      ),
-    );
-  }
-}
