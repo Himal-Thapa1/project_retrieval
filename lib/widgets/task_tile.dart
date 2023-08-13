@@ -1,51 +1,52 @@
 import 'package:flutter/material.dart';
 
-class TaskTile extends StatefulWidget {
+class TaskTile extends StatelessWidget {
+
+    late final bool isChecked;
+    late final String taskTitle;
+
+    TaskTile ({required this.isChecked, required this.taskTitle});
 
 
-  const TaskTile({
-    super.key,
-  });
-
-  @override
-  State<TaskTile> createState() => _TaskTileState();
-}
-
-class _TaskTileState extends State<TaskTile> {
-    bool isChecked = false;
-
-    void checkboxCallBack (bool? checkBoxState) {
-      setState(() {
-        isChecked = checkBoxState ?? true;
-      });
-    }
+    // void checkboxCallBack (bool? checkBoxState) {
+    //   // setState(() {
+    //   //   isChecked = checkBoxState ?? true;
+    //   // });
+    // }
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(
-        "This is a task, this is where it will go.",
+        taskTitle,
         style: TextStyle(
           decoration: isChecked? TextDecoration.lineThrough: null,
         ),
       ),
-      trailing: TaskCheckBox(isChecked, checkboxCallBack),
-    );
-  }
-}
-
-class TaskCheckBox extends StatelessWidget {
-  late final bool checkBoxState;
-  final Function(bool?) toggleCheckboxState;
-
-  TaskCheckBox(this.checkBoxState, this.toggleCheckboxState);
-
-  @override
-  Widget build(BuildContext context) {
-    return Checkbox(
+      // trailing: TaskCheckBox(isChecked, checkboxCallBack),
+      trailing: Checkbox(
       activeColor: Colors.lightBlueAccent,
-      value: checkBoxState,
-      onChanged: toggleCheckboxState,
+      value: isChecked, onChanged: (bool? value) { 
+        //left blank for now
+       },
+      // onChanged: toggleCheckboxState,
+    ),
     );
   }
 }
+
+// class TaskCheckBox extends StatelessWidget {
+//   late final bool checkBoxState;
+//   final Function(bool?) toggleCheckboxState;
+
+//   TaskCheckBox(this.checkBoxState, this.toggleCheckboxState);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Checkbox(
+//       activeColor: Colors.lightBlueAccent,
+//       value: checkBoxState,
+//       onChanged: toggleCheckboxState,
+//     );
+//   }
+// }
