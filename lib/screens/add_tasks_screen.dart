@@ -13,8 +13,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
 
   @override
   Widget build(BuildContext context) {
-
-
     return Container(
       color: Color(0xff757575),
       child: Container(
