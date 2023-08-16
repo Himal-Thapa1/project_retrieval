@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:project_retrieval/models/task_data.dart';
+import 'package:provider/provider.dart';
 
 class AddTaskScreen extends StatefulWidget {
-  final Function addTaskCallBack;
-  AddTaskScreen(this.addTaskCallBack);
-
   @override
   State<AddTaskScreen> createState() => _AddTaskScreenState();
 }
-
 class _AddTaskScreenState extends State<AddTaskScreen> {
   late String newTaskTitle;
 
@@ -54,7 +52,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   minimumSize: const Size.fromHeight(50),
                 ),
                 onPressed: () {
-                    widget.addTaskCallBack(newTaskTitle);
+                    Provider.of<TaskData>(context, listen: false).addTask(newTaskTitle);
+                    Navigator.pop(context);
                 },
                 child: Text(
                   "Add",
