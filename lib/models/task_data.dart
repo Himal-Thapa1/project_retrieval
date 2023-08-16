@@ -5,9 +5,8 @@ import 'package:flutter/foundation.dart';
 
 class TaskData extends ChangeNotifier {
   List<Task> _tasks = [
-    Task(name: "do TASK 1"),
-    Task(name: "Do task 2"),
-    Task(name: "Do task 3"),
+    Task(name: "Add your todo list here."),
+    Task(name: "Long press the task to delete the task."),
   ];
 
   UnmodifiableListView<Task> get tasks {

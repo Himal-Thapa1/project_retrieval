@@ -42,7 +42,11 @@ class TasksList extends StatelessWidget {
                         taskData.deleteTask(task);
                         Navigator.pop(context);
                       },
-                      child: Text("Delete"),
+                      child: Text("Delete",
+                      style: TextStyle(
+                        color: Colors.red,
+                      ),
+                      ),
                     ),
                   ],
                 ),
