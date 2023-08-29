@@ -2,3 +2,5 @@ everything is working fine for now and now I am trying to add the icon and to th
 this is new trhing
 this is another new thing to test
 now I am jsut trying to add persistence to the application.
+don't know where it went haywire but now
+trying to use sqflite to manage the database.

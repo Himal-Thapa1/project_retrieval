@@ -10,7 +10,7 @@ class TaskData extends ChangeNotifier {
     Task(name: "Long press the task to delete the task."),
   ];
 
-  TaskData(){
+  TaskData() {
     _loadTasks();
   }
   UnmodifiableListView<Task> get tasks {
@@ -40,21 +40,33 @@ class TaskData extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateTasksFromStrings(List<String> taskNames) {
-    _tasks = taskNames.map((name) => Task(name: name)).toList();
-    notifyListeners();
-  }
-   Future<void> _saveTasks() async {
+  // void updateTasksFromStrings(List<String> taskInfoList) {
+  //   _tasks = taskInfoList.map((taskInfo) {
+  //     final taskInfoParts = taskInfo.split(',');
+  //     return Task(
+  //       name: taskInfoParts[0],
+  //       isDone: taskInfoParts[1] == 'true', // Convert the string to a boolean
+  //     );
+  //   }).toList();
+  //   notifyListeners();
+  // }
+
+  Future<void> _saveTasks() async {
     final prefs = await SharedPreferences.getInstance();
-    final taskNames = _tasks.map((task) => task.name).toList();
-    await prefs.setStringList('tasks', taskNames);
+    for (final task in _tasks) {
+      await prefs.setBool(task.name, task.isDone);
+    }
   }
 
   Future<void> _loadTasks() async {
     final prefs = await SharedPreferences.getInstance();
-    final taskNames = prefs.getStringList('tasks') ?? [];
-    _tasks = taskNames.map((name) => Task(name: name)).toList();
+    final taskNames = prefs.getKeys().toList();
+    _tasks = taskNames.map((taskName) {
+      return Task(
+        name: taskName,
+        isDone: prefs.getBool(taskName) ?? false,
+      );
+    }).toList();
     notifyListeners();
   }
-
 }
