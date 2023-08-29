@@ -4,15 +4,28 @@ import 'package:provider/provider.dart';
 import '../models/task_data.dart';
 import '../widgets/tasks_list.dart';
 
-class TasksScreen extends StatelessWidget {
+class TasksScreen extends StatefulWidget {
+  @override
+  State<TasksScreen> createState() => _TasksScreenState();
+}
 
+class _TasksScreenState extends State<TasksScreen> {
+
+  // late List<String> tasks;
+@override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.lightBlueAccent,
-        onPressed: () {
-            // showModalBottomSheet(context: context, builder: buildButtomSheet);
-            showModalBottomSheet(context: context, builder: (context) => AddTaskScreen());
+        onPressed: () async {
+          // showModalBottomSheet(context: context, builder: (context) => AddTaskScreen());
+         final newTaskTitle = await showModalBottomSheet(
+            context: context,
+            builder: (context) => AddTaskScreen(),
+          ); // No need to pass TaskData
+          if (newTaskTitle != null) {
+            // The TaskData class handles adding tasks and persistence
+          }
         },
         child: Icon(Icons.add),
       ),
@@ -22,8 +35,8 @@ class TasksScreen extends StatelessWidget {
         children: [
           Container(
             child: Padding(
-              padding: EdgeInsets.only(
-                  top: 50, left: 30, right: 30, bottom: 30),
+              padding:
+                  EdgeInsets.only(top: 50, left: 30, right: 30, bottom: 30),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -77,6 +90,3 @@ class TasksScreen extends StatelessWidget {
     );
   }
 }
-
-
-
